@@ -1,15 +1,24 @@
 {
   "Description" : "Launch an EC2 instance and pass in a bash script as UserData to cloud-init",
   "Parameters": {
+    "AmiID" : { // "ami-38cd975d"
+      "Type" : "String"
+      },
+    "InstanceName" : {
+      "Type" : "String"
+      },
     "UserData": {
       "Type": "String"
+    },
+    "SecurityGroupId": { // "sg-4ecb7c27"
+      "Type" : "String"
     }
   },
   "Resources": {
     "TempEC2Instance": {
       "Type" : "AWS::EC2::Instance",
       "Properties" : {
-        "ImageId" : "ami-38cd975d",
+        "ImageId" : { "Ref" : "AmiID"},
         "InstanceType" : "t2.micro",
         "KeyName" : "temp-test-instance",
         "BlockDeviceMappings" : [
@@ -23,10 +32,10 @@
             }
         ],
         "UserData" : { "Ref" : "UserData" },
-        "SecurityGroupIds" : [ "sg-4ecb7c27" ],
+        "SecurityGroupIds" : [ { "Ref" : "SecurityGroupId" } ],
         "Tags" : [ {
           "Key" : "Name",
-          "Value" : "TempTestInstance"
+          "Value" : { "Ref" : "InstanceName" }
         } ],
       }
     }
