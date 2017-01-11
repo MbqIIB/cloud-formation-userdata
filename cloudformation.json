@@ -1,7 +1,7 @@
 {
   "Description" : "Launch an EC2 instance and pass in a bash script as UserData to cloud-init",
   "Parameters": {
-    "AmiID" : { // "ami-38cd975d"
+    "AmiID" : {
       "Type" : "String"
       },
     "InstanceName" : {
@@ -10,7 +10,7 @@
     "UserData": {
       "Type": "String"
     },
-    "SecurityGroupId": { // "sg-4ecb7c27"
+    "SecurityGroupId": {
       "Type" : "String"
     }
   },
