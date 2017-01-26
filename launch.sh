@@ -1,5 +1,9 @@
 #!/bin/bash
 
+source params.sh
+
+sed -i -e "s/\${PARAM}/`echo $MY_PARAM`/" cloud-init.sh
+
 aws cloudformation create-stack \
 	--stack-name UserDataTestStack \
     --template-body file://cloudformation.json \

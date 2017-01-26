@@ -2,5 +2,5 @@
 
 # commands are executed as root
 cd ~
-echo "Hi" > hi.txt
+echo ${PARAM} > hi.txt
 touch emptyfile.txt
